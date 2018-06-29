@@ -17,14 +17,40 @@
 
 <div id="demo">
   <h2>测试: v-for 遍历数组</h2>
-
+<ul>
+  <li v-for="(p, index) in persons" :key="index">
+    {{p.id}}--{{p.name}}--{{p.age}}
+    <button @click="deleteP(index)">delete</button>
+    <button @click="updateP(index, {id: 5, name: 'ruo', age:19})">update</button>
+  </li>
+</ul>
   <h2>测试: v-for 遍历对象</h2>
-
+<p v-for="(value, key) in persons[1]" :key="key">
+  {{key}}--{{value}}
+</p>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+new Vue ({
+  el: '#demo',
+  data: {
+    persons: [
+      {id: 1, name: 'adc', age: 15},
+      {id: 2, name: 'ap', age: 12},
+      {id: 3, name: 'aoe', age: 17},
+      {id: 4, name: 'asd', age: 13}
+    ]
+  },
+  methods: {
+    deleteP (index) {
+      this.persons.splice(index, 1)
+    },
+    updateP (index, newP) {
+      this.persons.splice(index, 1, newP)
+    }
+  }
+})
 </script>
 </body>
 </html>

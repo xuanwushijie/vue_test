@@ -15,10 +15,21 @@
 -->
 
 <div id="demo">
+  <p v-if="ok">true</p>
+  <p v-else>false</p>
+  <p v-show="ok">yes</p>
+  <p v-show="!ok">no</p>
+  <button @click="ok = !ok">update</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
+  new Vue ({
+    el: '#demo',
+    data: {
+      ok: true
+    }
+  })
 </script>
 </body>
 </html>

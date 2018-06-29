@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>07_事件处理</title>
+    <meta charset="UTF-8">
+    <title>07_事件处理</title>
 </head>
 <body>
 <!--
@@ -22,17 +22,53 @@
 
 <div id="example">
 
-  <h2>1. 绑定监听</h2>
+    <h2>1. 绑定监听</h2>
+    <button @click="test1">test1</button>
+    <button @click="test2('abc')">test2</button>
+    <button @click="test3('abc', $event)">test3</button>
 
-  <h2>2. 事件修饰符</h2>
-
-  <h2>3. 按键修饰符</h2>
-
+    <h2>2. 事件修饰符</h2>
+    <a href="http://www.baidu.com" @click.prevent="test4"> ssa</a>
+    <div style="height:200px; width: 200px; background: red" @click="test5">
+        <div style="height:100px; width: 100px; background: blue" @click.stop="test6"></div>
+    </div>
+    <h2>3. 按键修饰符</h2>
+    <input type="text" @keyup.13="test7">
+    <input type="text" @keyup.enter="test8">
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+  new Vue({
+    el: '#example',
+    data: {},
+    methods: {
+      test1(event) {
+        alert(event.target.innerHTML)
+      },
+      test2(ss) {
+        alert(ss)
+      },
+      test3(ss, event) {
+        alert(ss + '--' + event.target.textContent)
+      },
+      test4(event) {
+        alert(event.target.innerHTML)
+      },
+      test5() {
+        alert('外面')
+      },
+      test6() {
+        alert('里面')
+      },
+      test7(event) {
+        alert(event.target.value + '---' + event.keyCode)
+      },
+      test8(event) {
+        alert(event.target.value + '---' + event.keyCode)
+      }
+    }
+  })
 </script>
 </body>
 </html>

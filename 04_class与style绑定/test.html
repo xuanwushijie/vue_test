@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>04_class与style绑定</title>
-  <style>
-    .classA {
-      color: red;
-    }
-    .classB {
-      background: blue;
-    }
-    .classC {
-      font-size: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>04_class与style绑定</title>
+    <style>
+        .classA {
+            color: red;
+        }
+
+        .classB {
+            background: blue;
+        }
+
+        .classC {
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
 
@@ -31,15 +33,35 @@
 -->
 
 <div id="demo">
-  <h2>1. class绑定: :class='xxx'</h2>
-
-  <h2>2. style绑定</h2>
-
+    <h2>1. class绑定: :class='xxx'</h2>
+    <p :class="A" class="classC">AAA</p>
+    <p :class="b">AAA</p>
+    <p :class="{classA: hasA, classB: hasB}">AAA</p>
+    <h2>2. style绑定</h2>
+    <p :style="{color: myca, fontSize: mysz+'px'}">:style="{color: myca, fontSize: mysz+'px'}"</p>
+    <button @click="update">更新</button>
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
 <script type="text/javascript">
-
+  new Vue({
+    el: '#demo',
+    data: {
+      A: 'classA',
+      hasB: 'true',
+      hasA: 'false',
+      b: ['classA, classB'],
+      myca: 'red',
+      mysz: '20'
+    },
+    methods: {
+      update() {
+        this.A = 'classB'
+        this.myca = 'blue'
+        this.mysz = '50'
+      }
+    }
+  })
 </script>
 </body>
 </html>
