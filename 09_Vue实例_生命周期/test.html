@@ -23,11 +23,18 @@
   beforeDestory(): 做收尾工作, 如: 清除定时器
 -->
 
-<div>
+<div id="app">
 
 </div>
 
 <script type="text/javascript" src="../js/vue.js"></script>
-<script type="text/javascript"></script>
+<script type="text/javascript">
+  new Vue ({
+    el: '#app',
+    data: {
+      isShow:true
+    }
+  })
+</script>
 </body>
 </html>
